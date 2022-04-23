@@ -1,0 +1,7 @@
+server:
+  port: 9091
+  servlet:    context-path: /my-emp-app
+spring:  datasource:    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydb
+    username: root
+    password: root
