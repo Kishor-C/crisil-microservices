@@ -1,0 +1,5 @@
+# giving logical name which is common for all the instances of this microservices
+# this name will be registered in the service discovery 
+spring:  application:    name: app1
+ 
+server:  port: 8081
