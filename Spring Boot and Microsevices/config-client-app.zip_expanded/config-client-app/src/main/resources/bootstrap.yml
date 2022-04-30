@@ -1,0 +1,5 @@
+#bootstrap yml is loaded before any configuraiton file
+#below property specifies the location of the configuration server
+#spring.application.name is the name of the configuration file
+spring:
+  application:    name: hello  cloud:    config:      uri: http://localhost:8888/
