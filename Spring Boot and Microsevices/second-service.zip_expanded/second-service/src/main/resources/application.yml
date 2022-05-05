@@ -2,3 +2,18 @@ server:
   port: 9091
 
 spring:  application:    name: APP2
+
+# Enable actuator endpoint to see CB properties i.e., CB status using /actuator/health
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:    health:      show-details: always
+  health:    circuitbreakers:      enabled: true     
+resilience4j:  circuitbreaker:    instances:      fetchFirstApp:
+        register-health-indicator: true
+        ring-buffer-size-in-closed-state: 6
+        ring-buffer-size-in-half-open-state: 3
+        wait-duration-in-open-state: 50s
+        failure-rate-threshold: 50

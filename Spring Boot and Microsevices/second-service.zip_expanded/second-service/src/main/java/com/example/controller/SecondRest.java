@@ -12,14 +12,15 @@ import org.springframework.web.client.RestTemplate;
 import com.example.clients.ClientFirst;
 import com.example.model.beans.Account;
 import com.example.model.beans.Wallet;
+import com.example.service.MySecondService;
 
 @RestController
 @RequestMapping("second")
 public class SecondRest {
 
-	// this is a load balanced RestTemplate
+	
 	@Autowired
-	private RestTemplate template;
+	private MySecondService service;
 	
 	// this is an instance that will be created dynamically because of @EnableFeingClients
 	@Autowired
@@ -28,7 +29,7 @@ public class SecondRest {
 	// calls via RestTemplate
 	@GetMapping
 	public ResponseEntity<Object> callMicroservice() {
-		String result = template.getForObject("http://APP1/first/test", String.class);
+		String result = service.callFirstMicroservice();
 		return ResponseEntity.status(200).body("Second Microservices calls -> "+result);
 	}
 	@PutMapping("{amount}")

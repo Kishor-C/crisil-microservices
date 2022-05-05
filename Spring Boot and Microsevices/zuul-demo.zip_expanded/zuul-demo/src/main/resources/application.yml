@@ -1,0 +1,15 @@
+server:
+  port: 5555
+  
+spring:  application:    name: zuul-app
+
+#register with eureka 
+eureka:  client:    register-with-eureka: true
+    fetch-registry: true
+#actuator endpoint to see the proxy url
+management:  endpoints:    web:      exposure:        include: "*"
+
+#configuring the proxy url for the original microservice url
+zuul:  ignored-services: "*"
+  prefix: /zuulapi
+  routes:    app1: /one/**
